@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 r_ball = 0.10  # 10 cm radius (full diameter 20 cm)
-faces = 12 * np.ones(12) + 20 * np.ones(20)  # pentagons + hexagons
+faces = np.concatenate((12 * np.ones(12), 20 * np.ones(20)))  # pentagons + hexagons
 
 # magnet coils (4 total, curved arcs)
 coil_arc = np.pi / 12  # 15° each
@@ -56,7 +56,7 @@ n_channels = 4 * 4  # 16 total
 total_length = n_channels * channel_length  # 64 m
 
 # velocity & pressure drop (simple)
-diameter = 1e-3  # 1 mm channel
+diameter = 1e-2  # 1 mm channel
 rho = 1100  # kg/m³
 v = mass_flow / (rho * np.pi * (diameter/2)**2)  # 0.79 m/s
 
